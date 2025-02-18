@@ -1,0 +1,41 @@
+button {
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    background-color: black;
+}
+
+svg {
+    color: white;
+    width: 12px;
+    height: 100%;
+}
+
+.dark-mode {
+    background-color: white;
+}
+
+h1 {
+    color: white;
+    transition: all 0.3s ease-in-out;
+    padding: 20px;
+}
+
+.dark-mode h1 {
+    color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 320px;
+}
