@@ -1,12 +1,37 @@
-const str = prompt('Введите размер члена');
-const span = document.querySelector('span');
+const darkMode = document.querySelector('#themeToggle');
 
-if (str.length < 5) {
-    span.textContent = 'Ебать пиписька мелкая'
-}
-else if (str.length <= 10) {
-    span.textContent = 'Ваша писька коротковата'
-}
-else {
-    span.textContent = 'У вас длинный член';
-}
+darkMode.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+const time = document.querySelector('#clock');
+
+let date = new Date().toLocaleString();
+time.textContent = (date);
+
+
+//тут мы храним карточку
+let cardContainer = document.querySelector('#cardContainer');
+//тут берем данные с инпутов
+let titleInput = document.querySelector('#titleInput');
+let descInput = document.querySelector('#descInput');
+//добавляем карточку
+const addCard = document.querySelector('#addCard');
+
+
+addCard.addEventListener('click', () => {
+
+    if (titleInput.value === '' || descInput.value === '') {
+        alert('Заполните поля');
+        return;
+    }
+
+    const newCard = document.createElement('div');
+    newCard.classList.add('card');
+
+     newCard.textContent = `${titleInput.value} ${descInput.value}`;
+
+     cardContainer.appendChild(newCard);
+})
+
+
