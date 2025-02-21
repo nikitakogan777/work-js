@@ -33,16 +33,35 @@ addCard.addEventListener('click', () => {
      newCard.textContent = `${titleInput.value} ${descInput.value}`;
      cardContainer.appendChild(newCard);
 
-    //удалляет карточку
-    const deleteCard = document.createElement('button');
-    deleteCard.textContent = 'Удалить';
-    deleteCard.addEventListener('click', () => {
-        newCard.remove();
-    })
-    newCard.appendChild(deleteCard);
+    // //удалляет карточку
+    // const deleteCard = document.createElement('button');
+    // deleteCard.textContent = 'Удалить';
+    // deleteCard.addEventListener('click', () => {
+    //     newCard.remove();
+    // })
+    // newCard.appendChild(deleteCard);
 
      titleInput.value = '';
      descInput.value = '';
+
+     //localStorage
+    const newCards = document.querySelectorAll('.card'); // Получаем все элементы с классом .card
+
+// Создаём массив с содержимым всех карт
+    const cardsArray = Array.from(newCards).map(card => card.textContent);
+
+// Сохраняем массив в localStorage
+    localStorage.setItem('cards', JSON.stringify(cardsArray));
+
 })
 
+const saveStorage = JSON.parse(localStorage.getItem('cards'));
 
+if (saveStorage && cardContainer) {
+    saveStorage.forEach(text => {
+        const newCardElement = document.createElement('div');
+        newCardElement.classList.add('card'); // Добавляем класс, если нужно
+        newCardElement.textContent = text; // Вставляем сохранённый текст
+        cardContainer.appendChild(newCardElement); // Добавляем в контейнер
+    });
+}
