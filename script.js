@@ -1,3 +1,4 @@
+// темная/светлая тема
 const darkMode = document.querySelector('#themeToggle');
 
 darkMode.addEventListener('click', () => {
@@ -30,8 +31,18 @@ addCard.addEventListener('click', () => {
     newCard.classList.add('card');
 
      newCard.textContent = `${titleInput.value} ${descInput.value}`;
-
      cardContainer.appendChild(newCard);
+
+    //удалляет карточку
+    const deleteCard = document.createElement('button');
+    deleteCard.textContent = 'Удалить';
+    deleteCard.addEventListener('click', () => {
+        newCard.remove();
+    })
+    newCard.appendChild(deleteCard);
+
+     titleInput.value = '';
+     descInput.value = '';
 })
 
 
